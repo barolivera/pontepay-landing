@@ -1,38 +1,26 @@
-const STEPS = [
-  {
-    title: 'Sign in',
-    body: 'Enter your email. A Stellar wallet is created automatically — no seed phrase, no extensions, no jargon.',
-  },
-  {
-    title: 'Browse orders',
-    body: 'Live rates from the blockchain. The exchange rate comes from the Reflector SEP-40 oracle — not set by us, not controlled by anyone.',
-  },
-  {
-    title: 'Trade',
-    body: 'USDC goes into a Soroban escrow contract — never a company wallet. Both sides confirm. Funds release automatically.',
-  },
-  {
-    title: 'Earn',
-    body: 'Idle USDC earns 10.83% APY automatically via DeFindex vaults. No lock-up, no action needed. Your savings work while you sleep.',
-  },
-]
+import { useLanguage } from '../i18n/languageContext'
+import { content } from '../i18n/translations'
 
 export default function HowItWorks() {
+  const { lang } = useLanguage()
+  const t = content.howItWorks
+  const steps = [t.step1, t.step2, t.step3, t.step4]
+
   return (
     <section className="bg-[#F5F5F5] px-6 py-24">
       <div className="max-w-[88rem] mx-auto flex flex-col lg:flex-row gap-16 items-center justify-center">
-        {/* Left: numbered steps with connector line */}
+        {/* Left: numbered steps */}
         <div className="shrink-0 lg:max-w-[520px]">
           <h2
             className="font-heading text-4xl md:text-5xl font-medium text-[#014A2D] mb-12"
             style={{ letterSpacing: '-0.03em' }}
           >
-            How it works
+            {t.eyebrow[lang]}
           </h2>
 
           <div className="relative">
-            {STEPS.map((step, i) => (
-              <div key={step.title} className="flex gap-6 pb-10 last:pb-0">
+            {steps.map((step, i) => (
+              <div key={i} className="flex gap-6 pb-10 last:pb-0">
                 {/* Number */}
                 <span className="relative z-10 flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full bg-[#014A2D]">
                   <span className="font-heading text-xl font-bold text-[#4ADE80]">
@@ -42,10 +30,10 @@ export default function HowItWorks() {
 
                 <div className="pt-1.5">
                   <h3 className="font-heading text-xl font-bold text-[#014A2D]">
-                    {step.title}
+                    {step.title[lang]}
                   </h3>
                   <p className="font-body text-gray-600 mt-2 leading-relaxed max-w-sm">
-                    {step.body}
+                    {step.desc[lang]}
                   </p>
                 </div>
               </div>

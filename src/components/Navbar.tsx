@@ -1,7 +1,11 @@
 import { APP_URL } from '../constants'
 import LanguageSelector from './LanguageSelector'
+import { useLanguage } from '../i18n/languageContext'
+import { content } from '../i18n/translations'
 
 export default function Navbar() {
+  const { lang } = useLanguage()
+
   return (
     <nav className="relative bg-transparent px-6 py-5">
       <div className="max-w-[88rem] mx-auto flex items-center justify-between">
@@ -26,7 +30,7 @@ export default function Navbar() {
             rel="noreferrer"
             className="bg-[#014A2D] text-white px-7 py-2.5 rounded-full hover:bg-[#015c38] transition-colors duration-200"
           >
-            Open app →
+            {content.hero.cta[lang]} →
           </a>
         </div>
       </div>

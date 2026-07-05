@@ -1,4 +1,10 @@
+import { useLanguage } from '../i18n/languageContext'
+import { content } from '../i18n/translations'
+
 export default function Footer() {
+  const { lang } = useLanguage()
+  const t = content.footer
+
   return (
     <footer className="bg-[#014A2D] text-white">
       <div className="max-w-[88rem] mx-auto px-10 py-16 flex flex-col gap-12 items-start">
@@ -15,7 +21,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="font-heading text-xl font-medium text-white/80">
-            Earn Global, Spend Local.
+            {t.tagline[lang]}
           </p>
           <a
             href="https://x.com/useponte"
@@ -33,7 +39,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex items-center gap-2">
           <span className="font-body text-white/70 text-sm">
-            Built on Stellar Soroban · MIT License
+            {t.built[lang]}
           </span>
           <svg
             viewBox="0 0 236 236"

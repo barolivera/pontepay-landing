@@ -1,11 +1,9 @@
 import { createContext, useContext } from 'react'
-import type { Lang, Translation } from './translations'
+import type { Lang } from './translations'
 
 export interface LanguageContextValue {
   lang: Lang
   setLang: (lang: Lang) => void
-  /** Translations for the current language. */
-  t: Translation
 }
 
 export const LanguageContext = createContext<LanguageContextValue | undefined>(

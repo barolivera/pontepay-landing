@@ -1,47 +1,52 @@
 import { Radio, Lock, QrCode, ArrowLeftRight } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { useLanguage } from '../i18n/languageContext'
+import { content } from '../i18n/translations'
+import type { Lang, Localized } from '../i18n/translations'
 
 interface Card {
   icon: LucideIcon
-  heading: string
-  body: string
+  title: Localized
+  desc: Localized
   variant: 'primary' | 'cream'
   /** Width class: a fixed width on desktop, or flex-1 to fill the row. */
   width: string
 }
 
+const t = content.builtDifferent
+
 const CARDS: Card[] = [
   {
     icon: Radio,
-    heading: 'Your money stays yours.',
-    body: 'USDC is locked in an escrow contract. Nobody — not us, not the counterparty — can touch it until both sides confirm.',
+    title: t.card1.title,
+    desc: t.card1.desc,
     variant: 'primary',
     width: 'w-full sm:w-[411px] shrink-0',
   },
   {
     icon: Lock,
-    heading: 'The real rate, always.',
-    body: 'Rate comes directly from the Reflector oracle on-chain. No operator sets it. No one can manipulate it.',
+    title: t.card2.title,
+    desc: t.card2.desc,
     variant: 'cream',
     width: 'flex-1',
   },
   {
     icon: QrCode,
-    heading: 'Pay like everyone else.',
-    body: 'Receive pesos via QR — scannable from any Argentine bank or wallet app.',
+    title: t.card3.title,
+    desc: t.card3.desc,
     variant: 'cream',
     width: 'w-full sm:w-[282px] shrink-0',
   },
   {
     icon: ArrowLeftRight,
-    heading: 'Argentina to Brazil in seconds.',
-    body: 'Send ARS, receive BRL via PIX. Argentina → Stellar → Brazil.',
+    title: t.card4.title,
+    desc: t.card4.desc,
     variant: 'primary',
     width: 'flex-1',
   },
 ]
 
-function CardItem({ card }: { card: Card }) {
+function CardItem({ card, lang }: { card: Card; lang: Lang }) {
   const isPrimary = card.variant === 'primary'
   const Icon = card.icon
   return (
@@ -60,13 +65,13 @@ function CardItem({ card }: { card: Card }) {
         <Icon className="w-5 h-5 text-[#014A2D]" />
       </span>
       <div className="flex flex-col gap-1.5">
-        <h3 className="font-heading text-lg font-bold">{card.heading}</h3>
+        <h3 className="font-heading text-lg font-bold">{card.title[lang]}</h3>
         <p
           className={`font-body text-sm leading-relaxed ${
             isPrimary ? 'text-white/70' : 'text-[#014A2D]/70'
           }`}
         >
-          {card.body}
+          {card.desc[lang]}
         </p>
       </div>
     </div>
@@ -74,6 +79,8 @@ function CardItem({ card }: { card: Card }) {
 }
 
 export default function BuiltDifferent() {
+  const { lang } = useLanguage()
+
   return (
     <section className="bg-[#f5f2e8] py-24 px-10">
       <div className="max-w-[88rem] mx-auto flex flex-col lg:flex-row gap-12 items-center justify-center">
@@ -89,20 +96,20 @@ export default function BuiltDifferent() {
         {/* Right: heading + 2×2 bento cards */}
         <div className="flex-1 min-w-0 w-full">
           <h2
-            className="font-heading text-4xl md:text-5xl font-bold text-[#014A2D] mb-8"
+            className="font-heading text-4xl md:text-5xl font-bold text-[#014A2D] whitespace-pre-line mb-8"
             style={{ letterSpacing: '-0.02em' }}
           >
-            Your money. Your rules.
+            {t.h2[lang]}
           </h2>
 
           <div className="flex flex-col gap-4">
             <div className="flex flex-col sm:flex-row gap-4 items-stretch">
-              <CardItem card={CARDS[0]} />
-              <CardItem card={CARDS[1]} />
+              <CardItem card={CARDS[0]} lang={lang} />
+              <CardItem card={CARDS[1]} lang={lang} />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-stretch">
-              <CardItem card={CARDS[2]} />
-              <CardItem card={CARDS[3]} />
+              <CardItem card={CARDS[2]} lang={lang} />
+              <CardItem card={CARDS[3]} lang={lang} />
             </div>
           </div>
         </div>

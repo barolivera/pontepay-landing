@@ -1,3 +1,6 @@
+import { useLanguage } from '../i18n/languageContext'
+import { content } from '../i18n/translations'
+
 interface StackItem {
   name: string
   body: string
@@ -65,6 +68,8 @@ function CardHead({ item }: { item: StackItem }) {
 }
 
 export default function TechStack() {
+  const { lang } = useLanguage()
+
   return (
     <section className="bg-[#f5f2e8] px-10 py-16">
       <div className="max-w-[88rem] mx-auto flex flex-col items-center gap-12">
@@ -72,7 +77,7 @@ export default function TechStack() {
           className="font-heading text-4xl md:text-5xl font-bold text-[#014A2D] text-center whitespace-pre-line"
           style={{ letterSpacing: '-0.03em' }}
         >
-          {'Powered by\nStellar — end to end.'}
+          {content.poweredBy.h2[lang]}
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 w-full">
