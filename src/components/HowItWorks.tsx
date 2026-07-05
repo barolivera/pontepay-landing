@@ -20,11 +20,11 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <section className="bg-white px-6 py-24">
-      <div className="max-w-[88rem] mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-[88rem] mx-auto flex flex-col lg:flex-row gap-16 items-center justify-center">
         {/* Left: numbered steps with connector line */}
-        <div>
+        <div className="shrink-0 lg:max-w-[520px]">
           <h2
-            className="font-heading text-4xl md:text-5xl font-semibold text-[#014A2D] mb-12"
+            className="font-heading text-4xl md:text-5xl font-medium text-[#014A2D] mb-12"
             style={{ letterSpacing: '-0.03em' }}
           >
             How it works
@@ -32,12 +32,7 @@ export default function HowItWorks() {
 
           <div className="relative">
             {STEPS.map((step, i) => (
-              <div key={step.title} className="relative flex gap-6 pb-10 last:pb-0">
-                {/* Connector line */}
-                {i < STEPS.length - 1 && (
-                  <span className="absolute left-[1.375rem] top-14 bottom-0 w-px bg-[#014A2D]/15" />
-                )}
-
+              <div key={step.title} className="flex gap-6 pb-10 last:pb-0">
                 {/* Number */}
                 <span className="relative z-10 flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full bg-[#014A2D]">
                   <span className="font-heading text-xl font-bold text-[#4ADE80]">
@@ -46,7 +41,7 @@ export default function HowItWorks() {
                 </span>
 
                 <div className="pt-1.5">
-                  <h3 className="font-heading text-xl font-semibold text-[#014A2D]">
+                  <h3 className="font-heading text-xl font-bold text-[#014A2D]">
                     {step.title}
                   </h3>
                   <p className="font-body text-gray-600 mt-2 leading-relaxed max-w-sm">
@@ -58,29 +53,18 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        {/* Right: phone mockup */}
-        <div className="flex justify-center">
-          <div className="relative w-[17rem] h-[35rem] rounded-[2.5rem] bg-black p-3 shadow-2xl">
-            {/* Notch */}
-            <span className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-b-2xl z-10" />
-            <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-gradient-to-br from-[#014A2D] via-[#015c38] to-[#4ADE80]">
-              <img
-                src="/screens/app-home.png"
-                alt="PontePay app home screen"
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none'
-                }}
-              />
-              {/* Fallback branding shown if image is absent */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <img
-                  src="/pontepay-logo.svg"
-                  alt=""
-                  className="w-16 h-16 rounded-xl opacity-90"
-                />
-              </div>
-            </div>
+        {/* Right: video */}
+        <div className="shrink-0 flex justify-center">
+          <div className="relative overflow-hidden rounded-2xl shadow-xl w-full max-w-[420px] aspect-[960/1604]">
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/how-it-work_video.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>

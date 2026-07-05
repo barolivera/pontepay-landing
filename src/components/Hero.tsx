@@ -9,7 +9,7 @@ export default function Hero() {
 
   return (
     <section>
-      <div className="relative mx-6 h-[85vh] rounded-2xl overflow-hidden">
+      <div className="relative mx-6 h-[85vh] rounded-3xl overflow-hidden">
         {/* Background video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -21,15 +21,11 @@ export default function Hero() {
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
 
-        {/* Legibility overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
-
-        {/* Content + ticker layer (absolute over the video) */}
+        {/* Content + ticker layer (absolute over the image) */}
         <div className="absolute inset-0 z-10 flex flex-col">
           {/* Content */}
           <div className="flex-1 flex flex-col justify-center px-6 md:px-14">
-            <span className="inline-flex items-center gap-2 self-start rounded-full border border-[#014A2D]/15 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-[#014A2D]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
+            <span className="inline-flex items-center self-start rounded-full border border-[#014A2D]/5 bg-white/40 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-[#1c1a18]">
               {t.eyebrow}
             </span>
 

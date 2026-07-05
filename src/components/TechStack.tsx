@@ -1,12 +1,21 @@
 const STACK = [
-  { name: 'Soroban', body: 'P2P escrow contract · 20/20 tests' },
-  { name: 'Reflector SEP-40', body: 'Live ARS/USD oracle' },
-  { name: 'Privy', body: 'Embedded wallets · email login' },
-  { name: 'SEP-24', body: 'Anchor deposit/withdraw' },
-  { name: 'SEP-31', body: 'ARS→BRL corridor via PIX' },
-  { name: 'DeFindex', body: '10.83% APY yield vault' },
-  { name: 'Transferencias 3.0', body: 'BCRA instant rail' },
-  { name: 'Stellar', body: 'Settles in ~5 seconds' },
+  {
+    name: 'Soroban',
+    body: 'P2P escrow smart contract · Rust · 20/20 tests passing',
+  },
+  {
+    name: 'Reflector SEP-40',
+    body: 'Live ARS/USD oracle via cross-contract call',
+  },
+  {
+    name: 'Privy',
+    body: 'Embedded Stellar wallets · Email login · No seed phrase',
+  },
+  { name: 'SEP-24', body: 'Interactive anchor deposit/withdraw' },
+  { name: 'SEP-31', body: 'Cross-border corridor ARS→BRL' },
+  { name: 'DeFindex', body: 'Yield vault · 10.83% APY on idle USDC' },
+  { name: 'Transferencias 3.0', body: 'BCRA instant rail · EMVCo QR standard' },
+  { name: 'Stellar', body: 'Settles in ~5 seconds · Testnet deployed' },
 ]
 
 export default function TechStack() {

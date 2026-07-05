@@ -12,7 +12,7 @@ export default function Navbar() {
             alt="PontePay"
             className="w-8 h-8 rounded-md"
           />
-          <span className="font-heading text-2xl font-semibold text-[#014A2D]">
+          <span className="font-heading text-2xl font-semibold text-[#1c1a18]">
             PontePay
           </span>
         </a>
