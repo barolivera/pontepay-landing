@@ -1,7 +1,7 @@
 import { Radio, Lock, QrCode, ArrowLeftRight } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
-interface Feature {
+interface Card {
   icon: LucideIcon
   heading: string
   body: string
@@ -9,7 +9,7 @@ interface Feature {
   variant: 'primary' | 'cream'
 }
 
-const FEATURES: Feature[] = [
+const CARDS: Card[] = [
   {
     icon: Radio,
     heading: 'On-chain rate',
@@ -40,9 +40,9 @@ const FEATURES: Feature[] = [
   },
 ]
 
-export default function Features() {
+export default function BuiltDifferent() {
   return (
-    <section className="bg-[#F5F5F5] px-6 py-24">
+    <section className="bg-[#f5f2e8] px-6 py-24">
       <div className="max-w-[88rem] mx-auto">
         <h2
           className="font-heading text-4xl md:text-5xl text-[#014A2D]"
@@ -51,40 +51,40 @@ export default function Features() {
           Built different.
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-5 mt-14">
-          {FEATURES.map((feature) => {
-            const isPrimary = feature.variant === 'primary'
-            const Icon = feature.icon
+        <div className="grid md:grid-cols-2 gap-5 mt-14">
+          {CARDS.map((card) => {
+            const isPrimary = card.variant === 'primary'
+            const Icon = card.icon
             return (
               <div
-                key={feature.heading}
-                className={`${feature.span} rounded-3xl p-8 flex flex-col justify-between min-h-[16rem] transition-transform duration-200 hover:-translate-y-1 ${
+                key={card.heading}
+                className={`${card.span} rounded-2xl p-8 flex flex-col gap-4 transition-transform duration-200 hover:-translate-y-1 ${
                   isPrimary
                     ? 'bg-[#014A2D] text-white'
-                    : 'bg-[#f5f2e8] text-[#014A2D]'
+                    : 'bg-[#f5f2e8] border border-[#014A2D]/15 text-[#014A2D]'
                 }`}
               >
                 <span
                   className={`flex items-center justify-center w-12 h-12 rounded-full ${
-                    isPrimary ? 'bg-white/10' : 'bg-[#014A2D]/8'
+                    isPrimary ? 'bg-[#4ADE80]' : 'bg-[#014A2D]'
                   }`}
                 >
                   <Icon
                     className={`w-6 h-6 ${
-                      isPrimary ? 'text-[#4ADE80]' : 'text-[#014A2D]'
+                      isPrimary ? 'text-[#014A2D]' : 'text-[#4ADE80]'
                     }`}
                   />
                 </span>
-                <div className="mt-8">
+                <div>
                   <h3 className="font-heading text-2xl font-semibold">
-                    {feature.heading}
+                    {card.heading}
                   </h3>
                   <p
                     className={`font-body mt-3 leading-relaxed ${
                       isPrimary ? 'text-white/70' : 'text-[#014A2D]/70'
                     }`}
                   >
-                    {feature.body}
+                    {card.body}
                   </p>
                 </div>
               </div>

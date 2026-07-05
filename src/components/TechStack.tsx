@@ -1,52 +1,38 @@
 const STACK = [
-  { name: 'Soroban', body: 'P2P escrow contract. 20/20 tests passing.' },
-  {
-    name: 'Reflector SEP-40',
-    body: 'Live ARS/USD oracle via cross-contract call.',
-  },
-  {
-    name: 'Privy',
-    body: 'Embedded Stellar wallets. Email login, no seed phrase.',
-  },
-  {
-    name: 'SEP-24',
-    body: 'Anchor deposit/withdraw. Interoperable with any Stellar anchor.',
-  },
-  { name: 'SEP-31', body: 'Cross-border corridor. ARS → BRL via PIX.' },
-  { name: 'DeFindex', body: 'Yield vault. 10.83% APY on idle USDC.' },
-  {
-    name: 'Transferencias 3.0',
-    body: 'BCRA instant rail. EMVCo QR standard.',
-  },
+  { name: 'Soroban', body: 'P2P escrow contract · 20/20 tests' },
+  { name: 'Reflector SEP-40', body: 'Live ARS/USD oracle' },
+  { name: 'Privy', body: 'Embedded wallets · email login' },
+  { name: 'SEP-24', body: 'Anchor deposit/withdraw' },
+  { name: 'SEP-31', body: 'ARS→BRL corridor via PIX' },
+  { name: 'DeFindex', body: '10.83% APY yield vault' },
+  { name: 'Transferencias 3.0', body: 'BCRA instant rail' },
+  { name: 'Stellar', body: 'Settles in ~5 seconds' },
 ]
 
 export default function TechStack() {
   return (
-    <section className="bg-[#014A2D] px-6 py-24">
+    <section className="bg-[#f5f2e8] px-6 py-16">
       <div className="max-w-[88rem] mx-auto">
-        <span className="font-body text-sm font-semibold uppercase tracking-widest text-[#4ADE80]">
+        <p className="font-body text-sm font-semibold uppercase tracking-widest text-[#014A2D]/60 text-center">
           Powered by
-        </span>
+        </p>
         <h2
-          className="font-heading text-4xl md:text-5xl text-white mt-4"
+          className="font-heading text-4xl text-[#014A2D] text-center mt-3"
           style={{ letterSpacing: '-0.03em' }}
         >
           Stellar — end to end.
         </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-12">
           {STACK.map((item) => (
             <div
               key={item.name}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6 transition-colors duration-200 hover:bg-white/10"
+              className="bg-white rounded-xl p-6 text-center shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#4ADE80]" />
-                <h3 className="font-heading text-lg font-semibold text-white">
-                  {item.name}
-                </h3>
-              </div>
-              <p className="font-body text-white/70 mt-2 leading-relaxed">
+              <h3 className="font-heading text-lg font-semibold text-[#014A2D]">
+                {item.name}
+              </h3>
+              <p className="font-body text-gray-600 text-sm mt-1.5">
                 {item.body}
               </p>
             </div>

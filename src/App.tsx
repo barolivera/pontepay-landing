@@ -1,9 +1,8 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Problem from './components/Problem'
 import HowItWorks from './components/HowItWorks'
-import Features from './components/Features'
-import LatamBridge from './components/LatamBridge'
+import BuiltDifferent from './components/BuiltDifferent'
+import Stats from './components/Stats'
 import TechStack from './components/TechStack'
 import FinalCta from './components/FinalCta'
 import Footer from './components/Footer'
@@ -14,10 +13,9 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Problem />
         <HowItWorks />
-        <Features />
-        <LatamBridge />
+        <BuiltDifferent />
+        <Stats />
         <TechStack />
         <FinalCta />
       </main>

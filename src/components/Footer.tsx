@@ -1,15 +1,6 @@
-import { GITHUB_URL } from '../constants'
-
-const FOOTER_LINKS = [
-  { label: 'Marketplace', href: '#' },
-  { label: 'Earn', href: '#' },
-  { label: 'Corridor', href: '#' },
-  { label: 'GitHub', href: GITHUB_URL },
-]
-
 export default function Footer() {
   return (
-    <footer className="bg-[#014A2D] text-white">
+    <footer className="bg-black text-white">
       <div className="max-w-[88rem] mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           {/* Brand */}
@@ -27,22 +18,23 @@ export default function Footer() {
             <p className="font-heading text-xl text-white/80 mt-4">
               Earn Global, Spend Local.
             </p>
-          </div>
-
-          {/* Links */}
-          <nav className="flex flex-wrap gap-x-8 gap-y-3">
-            {FOOTER_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-                className="font-body text-white/70 hover:text-white transition-colors duration-200"
+            <a
+              href="https://x.com/useponte"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="PontePay on X"
+              className="inline-flex mt-5 text-white/60 hover:text-white transition-colors"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="w-5 h-5"
+                fill="currentColor"
+                aria-hidden="true"
               >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817-5.966 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         {/* Bottom bar */}
@@ -61,10 +53,6 @@ export default function Footer() {
               <path d="M203 26.06 44.65 106.76l13.51-6.88L176.3 39.69q-2-3.13-4.29-6.06Z" />
             </svg>
           </div>
-          <p className="font-body text-white/50 text-sm">
-            © 2026 PontePay — María Elisa Araya · Leonardo Cagliero · Barbara
-            Olivera
-          </p>
         </div>
       </div>
     </footer>
