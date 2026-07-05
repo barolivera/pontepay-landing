@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips -Z 400 stellar.png --out stellar_prev.png)",
+      "Bash(sips -Z 400 defindex.png --out defindex_prev.png)",
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(npm i *)",
+      "Bash(node ./_trim.mjs)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}

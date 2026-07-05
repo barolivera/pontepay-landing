@@ -19,7 +19,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-white px-6 py-24">
+    <section className="bg-[#F5F5F5] px-6 py-24">
       <div className="max-w-[88rem] mx-auto flex flex-col lg:flex-row gap-16 items-center justify-center">
         {/* Left: numbered steps with connector line */}
         <div className="shrink-0 lg:max-w-[520px]">
