@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import HowItWorks from './components/HowItWorks'
 import BuiltDifferent from './components/BuiltDifferent'
 import Stats from './components/Stats'
+import Waitlist from './components/Waitlist'
 import TechStack from './components/TechStack'
 import FinalCta from './components/FinalCta'
 import Footer from './components/Footer'
@@ -16,6 +17,7 @@ export default function App() {
         <HowItWorks />
         <BuiltDifferent />
         <Stats />
+        <Waitlist />
         <TechStack />
         <FinalCta />
       </main>

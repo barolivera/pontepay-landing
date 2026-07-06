@@ -7,7 +7,13 @@
       "Bash(convert --version)",
       "Bash(npm i *)",
       "Bash(node ./_trim.mjs)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(curl -s http://localhost:5174/api/waitlist)",
+      "Bash(curl -s -X POST http://localhost:5174/api/waitlist -H 'Content-Type: application/json' -d '{\"email\":\"sofi@pontepay.com\"}')",
+      "Bash(curl -s -X POST http://localhost:5174/api/waitlist -H 'Content-Type: application/json' -d '{\"email\":\"SOFI@pontepay.com\"}')",
+      "Bash(curl -s -X POST http://localhost:5174/api/waitlist -H 'Content-Type: application/json' -d '{\"email\":\"tomi@pontepay.com\"}')",
+      "Bash(curl -s -X POST http://localhost:5174/api/waitlist -H 'Content-Type: application/json' -d '{\"email\":\"nope\"}')",
+      "Bash(pkill -f \"vite\")"
     ]
   }
 }

@@ -172,6 +172,51 @@ export const content = {
     },
   },
 
+  // WAITLIST
+  waitlist: {
+    h2: {
+      en: 'Be the first to cross the bridge.',
+      es: 'Sé el primero en cruzar el puente.',
+      pt: 'Seja o primeiro a cruzar a ponte.',
+    },
+    subtext: {
+      en: 'Early adopters get reduced fees. No wallet needed — just your email.',
+      es: 'Los primeros usuarios pagan menos comisiones. Sin wallet — solo tu email.',
+      pt: 'Os primeiros usuários pagam menos taxas. Sem carteira — só seu email.',
+    },
+    placeholder: {
+      en: 'you@email.com',
+      es: 'tu@email.com',
+      pt: 'voce@email.com',
+    },
+    cta: {
+      en: 'Join waitlist',
+      es: 'Unirme a la lista',
+      pt: 'Entrar na lista',
+    },
+    submitting: {
+      en: 'Joining…',
+      es: 'Uniéndote…',
+      pt: 'Entrando…',
+    },
+    success: {
+      en: "You're in. We'll reach out before mainnet launch.",
+      es: 'Estás dentro. Te contactaremos antes del lanzamiento en mainnet.',
+      pt: 'Você entrou. Falaremos com você antes do lançamento na mainnet.',
+    },
+    error: {
+      en: 'Something went wrong. Please try again.',
+      es: 'Algo salió mal. Intentá de nuevo.',
+      pt: 'Algo deu errado. Tente novamente.',
+    },
+    // {count} is replaced with the live signup number.
+    counter: {
+      en: '{count} people already signed up',
+      es: '{count} personas ya se anotaron',
+      pt: '{count} pessoas já se inscreveram',
+    },
+  },
+
   // POWERED BY
   poweredBy: {
     h2: {
