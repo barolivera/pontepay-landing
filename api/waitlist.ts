@@ -1,30 +1,31 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import {
-  addSignup,
-  countFor,
-  isValidEmail,
-  readEntries,
-  sendSignupNotification,
-} from '../waitlist-core.ts'
+import { kv } from '@vercel/kv'
+import { SEED, isValidEmail, sendSignupNotification } from '../waitlist-core.ts'
 
 /**
  * Vercel serverless function — production counterpart to the Vite dev
  * middleware in waitlist-api.ts. Same contract:
  *
  *   GET  /api/waitlist  -> { count }
- *   POST /api/waitlist  { email } -> { count }
+ *   POST /api/waitlist  { email } -> { count } | 400
  *
- * On a new signup it emails a notification via Gmail SMTP (GMAIL_APP_PASSWORD).
- * Note: Vercel's filesystem is ephemeral, so the JSON file does not persist
- * across invocations — the email notification is the durable record of signups.
+ * Storage is Vercel KV (the filesystem is read-only in production):
+ *   - Set  "waitlist:emails" — every normalized email, for dedup.
+ *   - Key  "waitlist:count"  — public count = SEED + real signups.
+ *
+ * On a genuinely new signup it emails a notification via Gmail SMTP
+ * (GMAIL_APP_PASSWORD).
  */
+const EMAILS_KEY = 'waitlist:emails'
+const COUNT_KEY = 'waitlist:count'
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {
-    return res.status(200).json({ count: countFor(readEntries()) })
+    const count = (await kv.get<number>(COUNT_KEY)) ?? SEED
+    return res.status(200).json({ count })
   }
 
   if (req.method === 'POST') {
-    // Vercel parses JSON bodies automatically, but fall back to raw strings.
     let email: unknown
     try {
       const body =
@@ -38,12 +39,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Please enter a valid email.' })
     }
 
-    const result = addSignup(email)
-    if (result.created) {
-      // Await so the function isn't torn down before the email is sent.
-      await sendSignupNotification(result.email, result.count)
+    const normalized = email.trim().toLowerCase()
+
+    // sadd returns the number of newly-added members: 1 = new, 0 = duplicate.
+    const added = await kv.sadd(EMAILS_KEY, normalized)
+    // Derive the count from set cardinality so it can't drift from the set.
+    const count = SEED + (await kv.scard(EMAILS_KEY))
+    await kv.set(COUNT_KEY, count)
+
+    if (added === 1) {
+      console.log(`[waitlist] new signup: ${normalized} (count ${count})`)
+      await sendSignupNotification(normalized, count)
     }
-    return res.status(200).json({ count: result.count })
+
+    return res.status(200).json({ count })
   }
 
   res.setHeader('Allow', 'GET, POST')

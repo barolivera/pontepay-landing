@@ -1,25 +1,21 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { tmpdir } from 'node:os'
 import nodemailer from 'nodemailer'
 
 /**
- * Shared waitlist logic used by both the Vite dev/preview middleware
- * (waitlist-api.ts) and the Vercel serverless function (api/waitlist.ts),
- * so the two stay in lockstep.
- *
- * Persistence is a plain JSON file — no database. On Vercel the working
- * directory is read-only, so we fall back to the (ephemeral) tmp dir; the
- * email notification is what actually captures each signup there.
+ * Shared waitlist logic: the seed count, email validation, and the Gmail
+ * notification. Storage differs by environment:
+ *   - Local Vite dev/preview (waitlist-api.ts) uses the JSON file below.
+ *   - Production (api/waitlist.ts on Vercel) uses Vercel KV, since Vercel's
+ *     filesystem is read-only.
  */
 export const SEED = 3
 
 const NOTIFY_TO = 'pont3pay@gmail.com'
 const GMAIL_USER = 'pont3pay@gmail.com'
 
-const DATA_FILE = process.env.VERCEL
-  ? resolve(tmpdir(), 'waitlist.json')
-  : resolve(process.cwd(), 'waitlist.json')
+// Dev-only persistence. Vercel uses KV instead (see api/waitlist.ts).
+const DATA_FILE = resolve(process.cwd(), 'waitlist.json')
 
 export interface Entry {
   email: string
